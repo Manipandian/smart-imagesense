@@ -26,9 +26,9 @@ app.use(express.json());
 // To make cros domain request(cors - cross domain request)
 app.use(cors());
 
-// app.get('/', (req, res) => {
-//     res.send(dataBase.users);
-// })
+app.get('/', (req, res) => {
+    res.send('Got from server');
+})
 
 // Sign in
 app.post('/signIn', (req, res) => {signIn.handleSignIn(req, res, db, bcrypt)});
@@ -49,4 +49,4 @@ app.put('/image', (req, res) => { image.handleImageEnrty(req,res, db) })
 app.post('/imageurl', (req, res) => { image.handleImageUrl(req,res) })
 
 
-app.listen('3001', () => console.log('examble app run at 3001 port'));
+app.listen(process.env.PORT || '3001', () => console.log(`examble app run at ${process.env.PORT} port`));
