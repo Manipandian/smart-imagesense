@@ -46,7 +46,7 @@ app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db)});
 app.put('/image', (req, res) => { image.handleImageEnrty(req,res, db) })
 
 //To do api call
-app.post('/imageurl', (req, res) => { image.handleImageUrl(req,res,db) })
+app.post('/imageurl', (req, res) => { image.handleImageUrl(req,res)})
 
 
 app.listen(process.env.PORT || '3001', () => console.log(`examble app run at ${process.env.PORT || '3001'} port`));
