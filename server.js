@@ -49,4 +49,4 @@ app.put('/image', (req, res) => { image.handleImageEnrty(req,res, db) })
 app.post('/imageurl', (req, res) => { image.handleImageUrl(req,res,db) })
 
 
-app.listen(process.env.PORT || '3001', () => console.log(`examble app run at ${process.env.PORT} port`));
+app.listen(process.env.PORT || '3001', () => console.log(`examble app run at ${process.env.PORT || '3001'} port`));
