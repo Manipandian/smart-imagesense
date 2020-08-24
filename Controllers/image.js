@@ -3,7 +3,8 @@ const Clarifai = require('clarifai');
 const handleImageUrl = (req, res) => {
     // Instantiate a new Clarifai app by passing in your API key.
     const app = new Clarifai.App({apiKey: process.env.CLARIFAI_KEY});
-    app.models.predict('c0c0ac362b03416da06ab3fa36fb58e3', req.body.input)
+    let detectType = req.input.type === 'face' ? 'c0c0ac362b03416da06ab3fa36fb58e3' : req.input.type === 'apparel' ? '72c523807f93e18b431676fb9a58e6ad' : 'eeed0b6733a644cea07cf4c60f87ebb7';
+    app.models.predict( detectType, req.body.input)
     .then(response => res.json(response))
     .catch(err => res.status(400).json('Something went wrong with api call', err));
 }
