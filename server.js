@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const bcrypt = require('bcrypt-nodejs'); // To generate hash from password
 const cors = require('cors'); // cors - cross domain request
 const knex = require('knex'); // To connect database to the server
@@ -26,8 +27,10 @@ app.use(express.json());
 // To make cros domain request(cors - cross domain request)
 app.use(cors());
 
+ // For initial static file content load
+app.use(express.static('client/build'));
 app.get('/', (req, res) => {
-    res.send('Got from server');
+    res.sendFile(path.join(__dirname, '../client/build/index.html')); // For initial load
 })
 
 // Sign in
@@ -49,4 +52,4 @@ app.put('/image', (req, res) => { image.handleImageEnrty(req,res, db) })
 app.post('/imageurl', (req, res) => { image.handleImageUrl(req,res)})
 
 
-app.listen(process.env.PORT || '3001', () => console.log(`examble app run at ${process.env.PORT || '3001'} port`));
+app.listen(process.env.PORT || '8000', () => console.log(`examble app run at ${process.env.PORT || '8000'} port`));

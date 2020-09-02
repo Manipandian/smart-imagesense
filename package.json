@@ -2,9 +2,10 @@
   "name": "facerecog-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "start:dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
